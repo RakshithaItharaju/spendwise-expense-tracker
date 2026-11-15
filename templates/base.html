@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>SpendWise</title>
+  <style>
+    body { font-family: Arial, sans-serif; max-width: 700px; margin: 30px auto; padding: 0 15px; }
+    table { width: 100%; border-collapse: collapse; }
+    th, td { border-bottom: 1px solid #ddd; padding: 8px; text-align: left; }
+    .msg { background: #fff3cd; padding: 8px; margin: 10px 0; }
+    input { margin: 4px 0; padding: 6px; }
+  </style>
+</head>
+<body>
+  <h1>SpendWise</h1>
+  {% if session.username %}
+    <p>Hello, {{ session.username }} |
+       <a href="{{ url_for('dashboard') }}">Home</a> |
+       <a href="{{ url_for('logout') }}">Logout</a></p>
+  {% endif %}
+  {% for message in get_flashed_messages() %}
+    <div class="msg">{{ message }}</div>
+  {% endfor %}
+  {% block content %}{% endblock %}
+</body>
+</html>
