@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block content %}
+<h3>{{ 'Edit' if expense else 'Add' }} Expense</h3>
+<form method="post">
+  Amount:<br>
+  <input type="number" step="0.01" name="amount"
+         value="{{ expense.amount if expense else '' }}" required><br>
+  Category:<br>
+  <input name="category" value="{{ expense.category if expense else '' }}" required><br>
+  Date:<br>
+  <input type="date" name="expense_date"
+         value="{{ expense.expense_date if expense else '' }}" required><br>
+  Note:<br>
+  <input name="note" value="{{ (expense.note or '') if expense else '' }}"><br>
+  <button type="submit">Save</button>
+</form>
+{% endblock %}
